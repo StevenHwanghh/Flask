@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request
 from datetime import datetime
+from logging import DEBUG
 
 app = Flask(__name__)
+app.logger.setLevel(DEBUG)
 
 feedback_list = []
 
@@ -12,7 +14,6 @@ def addtofeedbacklist(feedback):
         username='Steven',
         recordtime=datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.%f')
     ))
-    print(feedback_list)
 
 
 @app.route('/')
@@ -26,6 +27,7 @@ def feedback():
     if request.method == 'POST':
         feedbackmsg = request.form['feedback']
         addtofeedbacklist(feedbackmsg)
+        app.logger.debug('Stored feedback; ' + feedbackmsg)
 
     return render_template("feedback.html")
 
@@ -36,4 +38,4 @@ def page_not_found(e):
 
 
 if __name__ == '__main__':
-    app.run(port=8888, debug=True)
+    app.run(port=8080, debug=True)
