@@ -10,5 +10,8 @@ Flask with Python
 7. multiple routes point to the same route function
 8. Error handling with @app.errorhandler
 9. POST request by methods=['GET', 'POST']. Use request.form[] to get data
-10.url_for('static', filename = 'css/main.css') to point to static resource
-11.logging information
+10. url_for('static', filename = 'css/main.css') to point to static resource
+11. logging information
+12. redirect to another page
+13. {% with %} statement in Jinja lets you define variable, but limits the scope of a variable with the {% endwith %} 
+14. Add css to style flash

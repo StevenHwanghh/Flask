@@ -1,9 +1,11 @@
-from flask import Flask, render_template, request, redirect, url_for
+import os
+from flask import Flask, render_template, request, redirect, url_for, flash
 from datetime import datetime
 from logging import DEBUG
 
 app = Flask(__name__)
 app.logger.setLevel(DEBUG)
+app.secret_key = os.urandom(16)
 
 feedback_list = []
 
@@ -28,6 +30,7 @@ def feedback():
         feedbackmsg = request.form['feedback']
         addtofeedbacklist(feedbackmsg)
         app.logger.debug('Stored feedback; ' + feedbackmsg)
+        flash("Your Feedback: " + feedbackmsg + " is submitted! Thank you!")
         return redirect(url_for('index'))
 
     return render_template("feedback.html")
