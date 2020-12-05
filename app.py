@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from datetime import datetime
 from logging import DEBUG
 
@@ -28,6 +28,7 @@ def feedback():
         feedbackmsg = request.form['feedback']
         addtofeedbacklist(feedbackmsg)
         app.logger.debug('Stored feedback; ' + feedbackmsg)
+        return redirect(url_for('index'))
 
     return render_template("feedback.html")
 
