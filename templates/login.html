@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block content %}
+<div class="main wrapper clearfix">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <table>
+            <tr>
+                <td>Email</td>
+                <td>{{ form.email }}</td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td>{{ form.password }}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button type="submit">Login</td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<div class="main wrapper clearfix">
+    <a href="{{ url_for('register') }}">Do not have an account ?</a>
+</div>
+{% endblock %}
+
+{% block siderbar %}
+{% endblock %}

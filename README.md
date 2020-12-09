@@ -15,3 +15,4 @@ Flask with Python
 12. redirect to another page
 13. {% with %} statement in Jinja lets you define variable, but limits the scope of a variable with the {% endwith %} 
 14. Add css to style flash
+15. WTForm and validators

@@ -19,8 +19,8 @@
         <a href="{{ url_for('index') }}"><h1 class="title">The Puppy site</h1></a>
         <nav>
             <ul>
-                <li><a href="#">Register</a></li>
-                <li><a href="/feedback">Login</a></li>
+                <li><a href="{{ url_for('register') }}">Register</a></li>
+                <li><a href="{{ url_for('login') }}">Login</a></li>
                 <li><a href="{{ url_for('feedback') }}">Feedback</a></li>
             </ul>
         </nav>
@@ -28,19 +28,21 @@
 </div>
 
 <div class="main-container">
-    <div class="main wrapper clearfix">
-        <article class="flashes">
-            {% with messages = get_flashed_messages() %}
-                <ul>
-                {% if messages%}
-                    {% for message in messages %}
+    {% with messages = get_flashed_messages() %}
+    {% if messages%}
+        <div class="main wrapper clearfix">
+                <article class="flashes">
+                    <ul>
+                        {% for message in messages %}
                         <li>{{ message }}</li>
-                    {% endfor %}
-                {% endif %}
-                </ul>
-            {% endwith %}
-        </article>
+                        {% endfor %}
+                    </ul>
+                </article>
+        </div>
+    {% endif %}
+    {% endwith %}
 
+    <div class="main wrapper clearfix">
         {% block content %}
         {% endblock %}
 
