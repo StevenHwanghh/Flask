@@ -19,8 +19,8 @@ Flask with Python
 1. Command:
     > from app import db, User
     db.create_all()
-    db.session.add
-    db.session.commit
+    db.session.add()
+    db.session.commit()
     User.query.all()
     User.query.first()
     User.query.filter_by(username='admin').all()
